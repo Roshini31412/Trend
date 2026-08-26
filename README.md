@@ -22,19 +22,9 @@ Orchestration	Kubernetes on AWS EKS
 Monitoring	Prometheus + Grafana
 **
 **Project structure****
-Trend/
-├── Dockerfile              # Multi-stage build for the React app
-├── .dockerignore
-├── .gitignore
-├── Jenkinsfile              # Declarative CI/CD pipeline
-├── terraform/
-│   └── main.tf              # VPC, IAM, EC2 + Jenkins provisioning
-├── k8s/
-│   ├── deployment.yaml       # Kubernetes Deployment (2 replicas)
-│   └── service.yaml          # Kubernetes LoadBalancer Service
-├── docs/
-│   └── screenshots/          # Screenshots referenced below
-└── README.md
+
+
+<img width="526" height="345" alt="Screenshot 2026-08-26 073314" src="https://github.com/user-attachments/assets/c8ad5879-56d3-47cd-8f8b-9874ac23a4b6" />
 
 
 **Prerequisites**
@@ -106,11 +96,11 @@ The Jenkinsfile defines a declarative pipeline with four stages:
 	4. Deploy to Kubernetes – applies the manifests in k8s/ and restarts the deployment so pods pull the new image.
 The pipeline is triggered automatically by a GitHub webhook on every push to main.
 
-Live deployment
+**Live deployment**
 	• Application URL: http://<LoadBalancer external IP or DNS>
 
 
-Screenshots
+**Screenshots**
 Stage	Screenshot
 App running locally	docs/screenshots/local-app.png
 Docker image running	docs/screenshots/docker-run.png
