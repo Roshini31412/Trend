@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
         IMAGE_NAME = "roshini31/trend-app"
     }
 
@@ -15,14 +14,20 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME:latest .'
+                sh "docker build -t ${IMAGE_NAME}:latest ."
             }
         }
 
         stage('Push to DockerHub') {
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push $IMAGE_NAME:latest'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds',
+                                                 usernameVariable: 'DOCKERHUB_USR',
+                                                 passwordVariable: 'DOCKERHUB_PSW')]) {
+                    sh """
+                        echo "${DOCKERHUB_PSW}" | docker login -u "${DOCKERHUB_USR}" --password-stdin
+                        docker push ${IMAGE_NAME}:latest
+                    """
+                }
             }
         }
 
