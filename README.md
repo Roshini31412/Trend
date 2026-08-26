@@ -102,7 +102,14 @@ The pipeline is triggered automatically by a GitHub webhook on every push to mai
 
 **Screenshots**
 Stage	Screenshot
-App running locally	docs/screenshots/local-app.png
+App running locally	:
+
+<img width="872" height="325" alt="image" src="https://github.com/user-attachments/assets/bae9f9ed-ba75-4ba2-99c6-1105e93a30b8" />
+
+<img width="872" height="325" alt="image" src="https://github.com/user-attachments/assets/f996a510-79f6-413d-a984-ec50fc329a88" />
+
+
+
 Docker image running	docs/screenshots/docker-run.png
 DockerHub repository	docs/screenshots/dockerhub.png
 Terraform apply output	docs/screenshots/terraform-apply.png
