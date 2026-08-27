@@ -1,5 +1,5 @@
 **Trend — React App CI/CD Deployment on AWS EKS**
-Deploying a React application to a production-ready state using Docker, Terraform, Jenkins, AWS EKS, and Kubernetes, with automated CI/CD and open-source monitoring.
+Deploying a React- application to a production-ready state using Docker, Terraform, Jenkins, AWS EKS, and Kubernetes, with automated CI/CD and open-source monitoring.
 
 
 **Overview**
