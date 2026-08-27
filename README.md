@@ -103,19 +103,88 @@ The pipeline is triggered automatically by a GitHub webhook on every push to mai
 **Screenshots**
 Stage	Screenshot
 App running locally	:
+Here's the full list, in order, with exactly what should be visible in each shot so it's obvious to anyone grading it that each stage actually worked.
+1. App running locally
+	• Browser at localhost:3000 showing the React app loaded
 
-<img width="872" height="325" alt="image" src="https://github.com/user-attachments/assets/bae9f9ed-ba75-4ba2-99c6-1105e93a30b8" />
+	• Terminal showing npm start output alongside it:
 
-<img width="872" height="325" alt="image" src="https://github.com/user-attachments/assets/f996a510-79f6-413d-a984-ec50fc329a88" />
+	• 
+2. Docker build success
+	• Terminal showing docker build -t trend-app:latest . completing without errors.
+	• 
+	
+
+3. Docker container running
+	• Terminal output of docker ps showing the trend-app-test container as Up
+	
+	• 
+	• 
+   Browser at localhost:3000 showing the app served from the container
 
 
 
-Docker image running	docs/screenshots/docker-run.png
-DockerHub repository	docs/screenshots/dockerhub.png
-Terraform apply output	docs/screenshots/terraform-apply.png
-Jenkins pipeline success	docs/screenshots/jenkins-pipeline.png
-kubectl get pods / get svc	docs/screenshots/kubectl-output.png
-App live via LoadBalancer	docs/screenshots/live-app.png
-Grafana dashboard	docs/screenshots/grafana.png
+
+
+
+5. GitHub repository
+	• My repo's main page on GitHub showing all files:
+
+
+	• 
+6. Terraform apply success
+	• Terminal showing the end of terraform apply output: resource creation summary (Apply complete! Resources: X added) and the jenkins_public_ip output value
+
+7. AWS Console — infrastructure created
+	• EC2 dashboard showing the running Jenkins instance
+	• 
+	• VPC dashboard showing the created VPC:
+	• 
+8. Jenkins unlocked and dashboard
+	• Jenkins login/unlock screen (proves you set it up)
+
+	• Jenkins dashboard showing installed plugins or the plugin manager with Docker Pipeline, Git, Kubernetes CLI, Pipeline checked
+9. GitHub webhook configured
+	• GitHub repo → Settings → Webhooks page showing the webhook URL and a green checkmark (recent delivery successful)
+10. EKS cluster running
+	• Terminal output of kubectl get nodes showing node(s) in Ready status
+
+	• AWS Console → EKS → your cluster showing status Active
+
+
+11. Kubernetes deployment applied
+	• Terminal output of kubectl get pods showing your pods in Running status
+	• 
+	• Terminal output of kubectl get svc trend-app-service showing TYPE: LoadBalancer and an EXTERNAL-IP
+
+
+
+12. Jenkins pipeline build
+	• Jenkins pipeline job page showing a green/successful build in the build history
+	
+	• The pipeline stage view (Checkout → Build → Push → Deploy, all green)
+
+	• Console output of one build (optional, shows the docker push and kubectl apply happening)
+
+13. Auto-trigger proof (important one — shows real CI/CD, not manual)
+	• A git push in your terminal
+
+	• Immediately followed by Jenkins showing a new build auto-started (timestamp matching)
+
+14. App live on the internet
+	• Browser showing the app loaded from the LoadBalancer's external URL (http://ad65ead04d5334bbda140538f13807f9-1744839119.ap-south-1.elb.amazonaws.com/) —
+
+
+	• 
+	• 
+15. LoadBalancer ARN
+	• AWS Console → EC2 → Load Balancers, showing the load balancer with its ARN visible .
+
+	• 
+	• 
+16. Monitoring dashboard
+	• Terminal showing kubectl get pods -n monitoring with Prometheus/Grafana pods Running
+	• Grafana dashboard in browser showing live cluster/pod metrics (CPU, memory, pod count)
+<img width="1172" height="7466" alt="image" src="https://github.com/user-attachments/assets/ea186360-6b3f-4923-aa3c-378ea25e9f34" />
 
 
