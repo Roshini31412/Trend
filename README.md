@@ -210,110 +210,108 @@ Browser at `localhost:3000` showing the React app loaded, alongside the terminal
 
 <img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/111a2438-da4a-4073-8806-3360e120d45b" />
 
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/5ab271e1-190e-4820-b4ae-8d721e822d69" />
+
+
 
 ### 2. Docker Build Success
 Terminal showing `docker build -t trend-app:latest .` completing without errors.
 
-<img src="docs/screenshots/02-docker-build-success.png" width="70%" />
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/e30e350b-73e5-40e5-9719-6143c3d2b21b" />
+
+
 
 ### 3. Docker Container Running
 Terminal output of `docker ps` showing the `trend-app-test` container as `Up`, and the browser at `localhost:3000` showing the app served from the container.
 
-<p float="left">
-  <img src="docs/screenshots/03-docker-ps-running.png" width="45%" />
-  <img src="docs/screenshots/03-app-in-container-browser-1.png" width="45%" />
-</p>
-<p float="left">
-  <img src="docs/screenshots/03-app-in-container-browser-2.png" width="45%" />
-  <img src="docs/screenshots/03-app-in-container-browser-3.png" width="45%" />
-</p>
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/e3f2b59b-b2ae-4315-b6b3-fac407bb71f7" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/e3f9f443-07dd-49ce-9094-6a7b555e7bb8" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/50db5b1a-9a9f-4ba1-86df-60940e9b72a8" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/aa6fd724-4594-4630-a9eb-a8311264f787" />
+
 
 ### 5. GitHub Repository
 The repo's main page on GitHub showing all project files.
 
-<img src="docs/screenshots/05-github-repository.png" width="70%" />
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/2735d7b6-7edb-4192-9ca4-31bff81c11c7" />
+
 
 ### 6. Terraform Apply Success
-Terminal showing the end of `terraform apply` output — the resource creation summary (`Apply complete! Resources: X added`) and the `jenkins_public_ip` output value.
+Terminal showing the end of `terraform apply` output — the resource creation summary.
 
-<img src="docs/screenshots/06-terraform-apply-success.png" width="70%" />
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/8dddd286-d591-419d-9611-9973a9016b64" />
 
 ### 7. AWS Console — Infrastructure Created
 EC2 dashboard showing the running Jenkins instance, and the VPC dashboard showing the created VPC.
 
-<p float="left">
-  <img src="docs/screenshots/07-aws-ec2-dashboard.png" width="45%" />
-  <img src="docs/screenshots/07-aws-vpc-dashboard.png" width="45%" />
-</p>
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/d49378b0-8872-4b6c-889e-6c46e4afafd3" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/a3b26ab1-326c-42dd-80a0-8eb8dc232327" />
+
 
 ### 8. Jenkins Unlocked and Dashboard
 Jenkins login/unlock screen, proving the initial setup was completed.
 
-<img src="docs/screenshots/08-jenkins-unlock-screen.png" width="70%" />
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/f26576d1-d94d-43cd-8207-f08a96b1b5bf" />
 
 ### 9. GitHub Webhook Configured
 GitHub repo → **Settings → Webhooks** page showing the webhook URL and a green checkmark for a successful recent delivery.
 
-> _Screenshot for this step was not included in the source evidence — add it here as `09-github-webhook.png`._
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/79592ef8-ab86-4c78-a481-120503237063" />
+
 
 ### 10. EKS Cluster Running
 Terminal output of `kubectl get nodes` showing node(s) in `Ready` status, and the AWS Console → EKS page showing the cluster status as `Active`.
 
-<p float="left">
-  <img src="docs/screenshots/10-kubectl-get-nodes.png" width="45%" />
-  <img src="docs/screenshots/10-eks-console-active.png" width="45%" />
-</p>
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/0a584b1c-853f-42a1-9db8-66ac41729c51" />
+
 
 ### 11. Kubernetes Deployment Applied
 Terminal output of `kubectl get pods` showing pods `Running`, and `kubectl get svc trend-app-service` showing `TYPE: LoadBalancer` with an `EXTERNAL-IP`.
 
-<p float="left">
-  <img src="docs/screenshots/11-kubectl-get-pods.png" width="45%" />
-  <img src="docs/screenshots/11-kubectl-get-svc.png" width="45%" />
-</p>
-<img src="docs/screenshots/11-kubectl-svc-detail.png" width="70%" />
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/a1dc9a58-675f-489e-908e-fbeac1faaf69" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/ab2442ed-cbdb-4472-aae7-d27d4e16eaf5" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/6564fc2f-faf9-4f65-b3dd-e019df54ebb8" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/016b7321-fa96-4a41-a63e-b02b6052df06" />
+
 
 ### 12. Jenkins Pipeline Build
 Jenkins pipeline job page showing a successful build in the history, the stage view (Checkout → Build → Push → Deploy, all green), and the console output of a build.
 
-<p float="left">
-  <img src="docs/screenshots/12-jenkins-build-history.png" width="30%" />
-  <img src="docs/screenshots/12-jenkins-stage-view.png" width="30%" />
-  <img src="docs/screenshots/12-jenkins-console-output.png" width="30%" />
-</p>
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/98337baa-9aec-4145-a5fa-2d65280e7a41" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/5bc515af-f51c-4ad7-b9ba-83285aa8cb33" />
+
 
 ### 13. Auto-Trigger Proof (Real CI/CD)
-A `git push` in the terminal, immediately followed by Jenkins showing a new build auto-started (timestamps matching).
+A `git push` in the terminal, immediately followed by Jenkins showing a new build auto-started.
 
-<p float="left">
-  <img src="docs/screenshots/13-git-push-terminal.png" width="45%" />
-  <img src="docs/screenshots/13-jenkins-autotrigger.png" width="45%" />
-</p>
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/a462638f-c8bb-4c46-9edd-11b06b920f5a" />
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/bab680d7-b721-4c58-9143-67cdeae96b48" />
+
 
 ### 14. App Live on the Internet
 Browser showing the app loaded from the LoadBalancer's external URL.
 
-<img src="docs/screenshots/14-app-live-browser.png" width="70%" />
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/2ce65bd0-525c-4228-a3d5-0a1bc30b7f00" />
+
 
 ### 15. LoadBalancer ARN
 AWS Console → EC2 → Load Balancers, showing the load balancer with its ARN visible.
 
-<img src="docs/screenshots/15-loadbalancer-arn.png" width="70%" />
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/c9920851-d3f8-4b31-ad14-7c77360a7233" />
+
 
 ### 16. Monitoring Dashboard
 Terminal showing `kubectl get pods -n monitoring` with Prometheus/Grafana pods `Running`, and the Grafana dashboard in the browser showing live cluster/pod metrics (CPU, memory, pod count).
 
-<img src="docs/screenshots/16-monitoring-pods.png" width="70%" />
-
-<p float="left">
-  <img src="docs/screenshots/16-grafana-dashboard-1.png" width="45%" />
-  <img src="docs/screenshots/16-grafana-dashboard-2.png" width="45%" />
-</p>
-<p float="left">
-  <img src="docs/screenshots/16-grafana-dashboard-3.png" width="45%" />
-  <img src="docs/screenshots/16-grafana-dashboard-4.png" width="45%" />
-</p>
-<img src="docs/screenshots/16-grafana-dashboard-5.png" width="70%" />
 
 ---
 
