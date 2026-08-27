@@ -208,10 +208,8 @@ Each stage below is documented with a screenshot proving it worked end-to-end.
 ### 1. App Running Locally
 Browser at `localhost:3000` showing the React app loaded, alongside the terminal running `npm start`.
 
-<p float="left">
-  <img src="docs/screenshots/01-local-app-browser.png" width="45%" />
-  <img src="docs/screenshots/01-npm-start-terminal.png" width="45%" />
-</p>
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/111a2438-da4a-4073-8806-3360e120d45b" />
+
 
 ### 2. Docker Build Success
 Terminal showing `docker build -t trend-app:latest .` completing without errors.
