@@ -196,8 +196,8 @@ The pipeline is triggered automatically by a **GitHub webhook** on every push to
 
 | Item | Value |
 |------|-------|
-| **Application URL** | `http://<LoadBalancer external IP or DNS>` |
-| **LoadBalancer ARN** | `[paste ARN here]` |
+| **Application URL** | `[http://<LoadBalancer external IP or DNS>](http://ad65ead04d5334bbda140538f13807f9-1744839119.ap-south-1.elb.amazonaws.com/]` |
+| **LoadBalancer ARN** | `[ad65ead04d5334bbda140538f13807f9-1744839119.ap-south-1.elb.amazonaws.com]` |
 
 ---
 
@@ -319,6 +319,4 @@ Terminal showing `kubectl get pods -n monitoring` with Prometheus/Grafana pods `
 
 ---
 
-## 📄 License
 
-This project is open-sourced for educational purposes. Feel free to fork and adapt it for your own CI/CD learning.
