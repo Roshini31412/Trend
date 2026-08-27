@@ -224,13 +224,12 @@ Terminal showing `docker build -t trend-app:latest .` completing without errors.
 ### 3. Docker Container Running
 Terminal output of `docker ps` showing the `trend-app-test` container as `Up`, and the browser at `localhost:3000` showing the app served from the container.
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/e3f2b59b-b2ae-4315-b6b3-fac407bb71f7" />
+<img width="932" height="105" alt="image" src="https://github.com/user-attachments/assets/617649db-c5c6-491e-bf98-889e2a641559" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/e3f9f443-07dd-49ce-9094-6a7b555e7bb8" />
+<img width="950" height="130" alt="image" src="https://github.com/user-attachments/assets/bd608795-3e1a-434d-bb27-5d1cc39c53c8" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/50db5b1a-9a9f-4ba1-86df-60940e9b72a8" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/aa6fd724-4594-4630-a9eb-a8311264f787" />
+<img width="1029" height="522" alt="image" src="https://github.com/user-attachments/assets/c57dc1ea-4ccc-4f92-a251-97e4ca592016" />
 
 
 ### 5. GitHub Repository
@@ -255,7 +254,7 @@ EC2 dashboard showing the running Jenkins instance, and the VPC dashboard showin
 ### 8. Jenkins Unlocked and Dashboard
 Jenkins login/unlock screen, proving the initial setup was completed.
 
-<img width="1000" height="750" alt="image" src="https://github.com/user-attachments/assets/f5197ce1-fd63-4190-8b9b-844868e5bd1d" />
+<img width="1910" height="965" alt="image" src="https://github.com/user-attachments/assets/98932bc2-f39d-4822-a379-6078dd758bd5" />
 
 
 ### 9. GitHub Webhook Configured
@@ -273,12 +272,10 @@ Terminal output of `kubectl get nodes` showing node(s) in `Ready` status, and th
 ### 11. Kubernetes Deployment Applied
 Terminal output of `kubectl get pods` showing pods `Running`, and `kubectl get svc trend-app-service` showing `TYPE: LoadBalancer` with an `EXTERNAL-IP`.
 
-<img width="1032" height="428" alt="image" src="https://github.com/user-attachments/assets/c341a906-4158-4090-88c4-d80cd24bf8cc" />
+<img width="1032" height="428" alt="image" src="https://github.com/user-attachments/assets/4d8477b4-aa74-4e01-b64c-72d875600fd2" />
 
+<img width="1911" height="911" alt="image" src="https://github.com/user-attachments/assets/d1d7eab3-117b-44fa-b38d-88f9122e2a74" />
 
-<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/6564fc2f-faf9-4f65-b3dd-e019df54ebb8" />
-
-<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/016b7321-fa96-4a41-a63e-b02b6052df06" />
 
 
 ### 12. Jenkins Pipeline Build
