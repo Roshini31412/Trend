@@ -274,19 +274,19 @@ Terminal output of `kubectl get pods` showing pods `Running`, and `kubectl get s
 
 <img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/a1dc9a58-675f-489e-908e-fbeac1faaf69" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/ab2442ed-cbdb-4472-aae7-d27d4e16eaf5" />
+<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/ab2442ed-cbdb-4472-aae7-d27d4e16eaf5" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/6564fc2f-faf9-4f65-b3dd-e019df54ebb8" />
+<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/6564fc2f-faf9-4f65-b3dd-e019df54ebb8" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/016b7321-fa96-4a41-a63e-b02b6052df06" />
+<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/016b7321-fa96-4a41-a63e-b02b6052df06" />
 
 
 ### 12. Jenkins Pipeline Build
 Jenkins pipeline job page showing a successful build in the history, the stage view (Checkout → Build → Push → Deploy, all green), and the console output of a build.
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/98337baa-9aec-4145-a5fa-2d65280e7a41" />
+<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/98337baa-9aec-4145-a5fa-2d65280e7a41" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/5bc515af-f51c-4ad7-b9ba-83285aa8cb33" />
+<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/5bc515af-f51c-4ad7-b9ba-83285aa8cb33" />
 
 
 ### 13. Auto-Trigger Proof (Real CI/CD)
@@ -306,11 +306,14 @@ Browser showing the app loaded from the LoadBalancer's external URL.
 ### 15. LoadBalancer ARN
 AWS Console → EC2 → Load Balancers, showing the load balancer with its ARN visible.
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/c9920851-d3f8-4b31-ad14-7c77360a7233" />
+<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/c9920851-d3f8-4b31-ad14-7c77360a7233" />
 
 
 ### 16. Monitoring Dashboard
 Terminal showing `kubectl get pods -n monitoring` with Prometheus/Grafana pods `Running`, and the Grafana dashboard in the browser showing live cluster/pod metrics (CPU, memory, pod count).
+
+
+<img width="965" height="3131" alt="image" src="https://github.com/user-attachments/assets/f5c41a2e-c5c3-46c5-89b7-f1ac058a2d8d" />
 
 
 ---
