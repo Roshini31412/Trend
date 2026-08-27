@@ -280,10 +280,8 @@ Terminal output of `kubectl get pods` showing pods `Running`, and `kubectl get s
 
 ### 12. Jenkins Pipeline Build
 Jenkins pipeline job page showing a successful build in the history, the stage view (Checkout → Build → Push → Deploy, all green), and the console output of a build.
-
-<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/98337baa-9aec-4145-a5fa-2d65280e7a41" />
-
-<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/5bc515af-f51c-4ad7-b9ba-83285aa8cb33" />
+	
+<img width="891" height="600" alt="image" src="https://github.com/user-attachments/assets/49330758-d3bf-42fe-9c8b-d1d6a3724a6c" />
 
 
 ### 13. Auto-Trigger Proof (Real CI/CD)
