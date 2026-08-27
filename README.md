@@ -301,8 +301,7 @@ Browser showing the app loaded from the LoadBalancer's external URL.
 ### 15. LoadBalancer ARN
 AWS Console → EC2 → Load Balancers, showing the load balancer with its ARN visible.
 
-<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/c9920851-d3f8-4b31-ad14-7c77360a7233" />
-
+<img width="1285" height="230" alt="image" src="https://github.com/user-attachments/assets/962842e3-00a7-4e9f-9eb3-9063888386f6" />
 
 ### 16. Monitoring Dashboard
 Terminal showing `kubectl get pods -n monitoring` with Prometheus/Grafana pods `Running`, and the Grafana dashboard in the browser showing live cluster/pod metrics (CPU, memory, pod count).
