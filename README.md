@@ -242,20 +242,21 @@ The repo's main page on GitHub showing all project files.
 ### 6. Terraform Apply Success
 Terminal showing the end of `terraform apply` output — the resource creation summary.
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/8dddd286-d591-419d-9611-9973a9016b64" />
+<img width="800" height="150" alt="image" src="https://github.com/user-attachments/assets/76440436-b666-44ce-8d36-01c3fdb9af68" />
+
 
 ### 7. AWS Console — Infrastructure Created
 EC2 dashboard showing the running Jenkins instance, and the VPC dashboard showing the created VPC.
+ 
+<img width="964" height="460" alt="image" src="https://github.com/user-attachments/assets/6ef057d5-4edb-4968-a398-40d2e52bc06f" />
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/d49378b0-8872-4b6c-889e-6c46e4afafd3" />
-
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/a3b26ab1-326c-42dd-80a0-8eb8dc232327" />
 
 
 ### 8. Jenkins Unlocked and Dashboard
 Jenkins login/unlock screen, proving the initial setup was completed.
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/f26576d1-d94d-43cd-8207-f08a96b1b5bf" />
+<img width="1000" height="750" alt="image" src="https://github.com/user-attachments/assets/f5197ce1-fd63-4190-8b9b-844868e5bd1d" />
+
 
 ### 9. GitHub Webhook Configured
 GitHub repo → **Settings → Webhooks** page showing the webhook URL and a green checkmark for a successful recent delivery.
@@ -272,9 +273,8 @@ Terminal output of `kubectl get nodes` showing node(s) in `Ready` status, and th
 ### 11. Kubernetes Deployment Applied
 Terminal output of `kubectl get pods` showing pods `Running`, and `kubectl get svc trend-app-service` showing `TYPE: LoadBalancer` with an `EXTERNAL-IP`.
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/a1dc9a58-675f-489e-908e-fbeac1faaf69" />
+<img width="1032" height="428" alt="image" src="https://github.com/user-attachments/assets/c341a906-4158-4090-88c4-d80cd24bf8cc" />
 
-<img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/ab2442ed-cbdb-4472-aae7-d27d4e16eaf5" />
 
 <img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/6564fc2f-faf9-4f65-b3dd-e019df54ebb8" />
 
