@@ -1,190 +1,312 @@
-**Trend — React App CI/CD Deployment on AWS EKS**
-Deploying a React- application to a production-ready state using Docker, Terraform, Jenkins, AWS EKS, and Kubernetes, with automated CI/CD and open-source monitoring.
+# 🚀 Trend — React App CI/CD Deployment on AWS EKS
 
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-blue?logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/Docker-Container-2496ED?logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/Terraform-IaC-844FBA?logo=terraform&logoColor=white" alt="Terraform" />
+  <img src="https://img.shields.io/badge/Jenkins-CI%2FCD-D24939?logo=jenkins&logoColor=white" alt="Jenkins" />
+  <img src="https://img.shields.io/badge/Kubernetes-AWS%20EKS-326CE5?logo=kubernetes&logoColor=white" alt="Kubernetes" />
+  <img src="https://img.shields.io/badge/Monitoring-Prometheus%20%26%20Grafana-E6522C?logo=grafana&logoColor=white" alt="Monitoring" />
+</p>
 
-**Overview**
+<p align="center">
+  Taking a React application from source code to a fully automated, production-ready deployment — using Docker, Terraform, Jenkins, AWS EKS, and open-source monitoring.
+</p>
+
+---
+
+## 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Prerequisites](#-prerequisites)
+- [Setup Instructions](#-setup-instructions)
+- [Pipeline Explanation](#-pipeline-explanation)
+- [Live Deployment](#-live-deployment)
+- [Screenshot Evidence](#-screenshot-evidence)
+- [License](#-license)
+
+---
+
+## 🧭 Overview
+
 This project takes a React application from source code to a fully automated production deployment:
-GitHub push → Jenkins (build & test) → Docker image → DockerHub
-   → Kubernetes (AWS EKS) → LoadBalancer → Live application
-                     ↑
-        Prometheus + Grafana (monitoring)
 
-Every push to main automatically triggers Jenkins to build a new Docker image, push it to DockerHub, and roll it out to the Kubernetes cluster — no manual steps required after the initial setup.
+```
+GitHub push → Jenkins (build & test) → Docker image → DockerHub → Kubernetes (AWS EKS) → LoadBalancer → Live application
+                                                                          ↑
+                                                          Prometheus + Grafana (monitoring)
+```
 
-Tech stack
-Layer	Tool
-Application	React
-Containerization	Docker
-Infrastructure as Code	Terraform
-CI/CD	Jenkins
-Image Registry	DockerHub
-Orchestration	Kubernetes on AWS EKS
-Monitoring	Prometheus + Grafana
-**
-**Project structure****
+Every push to `main` automatically triggers Jenkins to build a new Docker image, push it to DockerHub, and roll it out to the Kubernetes cluster — **no manual steps required after the initial setup.**
 
+---
 
-<img width="526" height="345" alt="Screenshot 2026-08-26 073314" src="https://github.com/user-attachments/assets/c8ad5879-56d3-47cd-8f8b-9874ac23a4b6" />
+## 🛠 Tech Stack
 
+| Layer                   | Tool                        |
+|-------------------------|------------------------------|
+| Application             | React                        |
+| Containerization        | Docker                       |
+| Infrastructure as Code  | Terraform                    |
+| CI/CD                   | Jenkins                      |
+| Image Registry          | DockerHub                    |
+| Orchestration           | Kubernetes on AWS EKS        |
+| Monitoring              | Prometheus + Grafana         |
 
-**Prerequisites**
-	• GitHub, AWS, and DockerHub accounts
-	• Installed locally: git, node (v18+), docker, aws-cli, terraform, kubectl, eksctl, helm
+---
 
-**Setup instructions**
+## 📁 Project Structure
 
-**1. Clone and run locally**
+```
+Trend/
+├── Dockerfile              # Multi-stage build for the React app
+├── .dockerignore
+├── .gitignore
+├── Jenkinsfile             # Declarative CI/CD pipeline
+├── terraform/
+│   └── main.tf             # VPC, IAM, EC2 + Jenkins provisioning
+├── k8s/
+│   ├── deployment.yaml     # Kubernetes Deployment (2 replicas)
+│   └── service.yaml        # Kubernetes LoadBalancer Service
+├── docs/
+│   └── screenshots/        # Screenshots referenced below
+└── README.md
+```
+
+---
+
+## ✅ Prerequisites
+
+- GitHub, AWS, and DockerHub accounts
+- Installed locally:
+  - `git`
+  - `node` (v18+)
+  - `docker`
+  - `aws-cli`
+  - `terraform`
+  - `kubectl`
+  - `eksctl`
+  - `helm`
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone and run locally
+
+```bash
 git clone https://github.com/<your-username>/Trend.git
 cd Trend
 npm install
 npm start          # runs on http://localhost:3000
+```
 
-**2. Build and test the Docker image**
+### 2. Build and test the Docker image
+
+```bash
 docker build -t trend-app:latest .
 docker run -d -p 3000:3000 --name trend-app-test trend-app:latest
+```
 
-**3. Push the image to DockerHub**
+### 3. Push the image to DockerHub
 
+```bash
 docker login
 docker tag trend-app:latest <your-dockerhub-username>/trend-app:latest
 docker push <your-dockerhub-username>/trend-app:latest
+```
 
-**4. Provision AWS infrastructure with Terraform**
+### 4. Provision AWS infrastructure with Terraform
 
+```bash
 cd terraform
 terraform init
 terraform plan
 terraform apply
+```
+
 This creates a VPC, IAM role, and an EC2 instance with Jenkins pre-installed.
 
-**5. Configure Jenkins**
+### 5. Configure Jenkins
 
-	1. Visit http://<ec2-public-ip>:8080 and unlock Jenkins.
-	2. Install plugins: Docker Pipeline, Git, Kubernetes CLI, Pipeline.
-	3. Add credentials for GitHub and DockerHub under Manage Jenkins → Credentials.
-	4. Add a GitHub webhook pointing to http://<ec2-public-ip>:8080/github-webhook/.
-  
-**6. Create the EKS cluster**
+1. Visit `http://<ec2-public-ip>:8080` and unlock Jenkins.
+2. Install plugins: **Docker Pipeline**, **Git**, **Kubernetes CLI**, **Pipeline**.
+3. Add credentials for GitHub and DockerHub under **Manage Jenkins → Credentials**.
+4. Add a GitHub webhook pointing to `http://<ec2-public-ip>:8080/github-webhook/`.
 
-  1. eksctl create cluster --name trend-cluster --region us-east-1 \ --nodegroup-name trend-nodes --node-type t3.medium \
-      --nodes 2 --nodes-min 1 --nodes-max 3 --managed
-  2. aws eks --region us-east-1 update-kubeconfig --name trend-cluster
-  3. kubectl get nodes
-     
-**7. Deploy to Kubernetes**
+### 6. Create the EKS cluster
+
+```bash
+eksctl create cluster --name trend-cluster --region us-east-1 \
+  --nodegroup-name trend-nodes --node-type t3.medium \
+  --nodes 2 --nodes-min 1 --nodes-max 3 --managed
+
+aws eks --region us-east-1 update-kubeconfig --name trend-cluster
+kubectl get nodes
+```
+
+### 7. Deploy to Kubernetes
+
+```bash
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 kubectl get svc trend-app-service   # note the EXTERNAL-IP
+```
 
-**8. Set up the Jenkins pipeline**
-Create a Pipeline job in Jenkins pointing at this repo's Jenkinsfile, with the GitHub webhook trigger enabled. From this point on, every git push to main automatically builds, pushes, and deploys the app.
+### 8. Set up the Jenkins pipeline
 
-**9. Monitoring**
+Create a Pipeline job in Jenkins pointing at this repo's `Jenkinsfile`, with the GitHub webhook trigger enabled.
 
+From this point on, every `git push` to `main` automatically builds, pushes, and deploys the app.
+
+### 9. Monitoring
+
+```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add grafana https://grafana.github.io/helm-charts
+
 kubectl create namespace monitoring
 helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring
+
 kubectl port-forward -n monitoring svc/prometheus-grafana 3001:80
-Open Grafana at http://localhost:3001.
+```
 
-**Pipeline explanation**
-The Jenkinsfile defines a declarative pipeline with four stages:
-	1. Checkout – pulls the latest code from GitHub.
-	2. Build Docker Image – builds the app into a Docker image.
-	3. Push to DockerHub – logs in and pushes the image with the latest tag.
-	4. Deploy to Kubernetes – applies the manifests in k8s/ and restarts the deployment so pods pull the new image.
-The pipeline is triggered automatically by a GitHub webhook on every push to main.
+Open Grafana at `http://localhost:3001`.
 
-**Live deployment**
-	• Application URL: http://<LoadBalancer external IP or DNS>
+---
 
+## 🔄 Pipeline Explanation
 
-**Screenshots**
-Stage	Screenshot
-App running locally	:
-Here's the full list, in order, with exactly what should be visible in each shot so it's obvious to anyone grading it that each stage actually worked.
-1. App running locally
-	• Browser at localhost:3000 showing the React app loaded
+The `Jenkinsfile` defines a declarative pipeline with four stages:
 
-	• Terminal showing npm start output alongside it:
+| Stage | Description |
+|-------|-------------|
+| 1. Checkout | Pulls the latest code from GitHub |
+| 2. Build Docker Image | Builds the app into a Docker image |
+| 3. Push to DockerHub | Logs in and pushes the image with the `latest` tag |
+| 4. Deploy to Kubernetes | Applies the manifests in `k8s/` and restarts the deployment so pods pull the new image |
 
-	• 
-2. Docker build success
-	• Terminal showing docker build -t trend-app:latest . completing without errors.
-	• 
-	
+The pipeline is triggered automatically by a **GitHub webhook** on every push to `main`.
 
-3. Docker container running
-	• Terminal output of docker ps showing the trend-app-test container as Up
-	
-	• 
-	• 
-   Browser at localhost:3000 showing the app served from the container
+---
 
+## 🌐 Live Deployment
 
+| Item | Value |
+|------|-------|
+| **Application URL** | `http://<LoadBalancer external IP or DNS>` |
+| **LoadBalancer ARN** | `[paste ARN here]` |
 
+---
 
+## 📸 Screenshot Evidence
 
+Each stage below is documented with a screenshot proving it worked end-to-end. Replace the placeholder image paths with your actual files from `docs/screenshots/`.
 
-5. GitHub repository
-	• My repo's main page on GitHub showing all files:
+### 1. App Running Locally
+Browser at `localhost:3000` showing the React app loaded, alongside the terminal running `npm start`.
 
+<p float="left">
+  <img src="docs/screenshots/01-local-app.png" width="45%" />
+  <img src="docs/screenshots/01-npm-start.png" width="45%" />
+</p>
 
-	• 
-6. Terraform apply success
-	• Terminal showing the end of terraform apply output: resource creation summary (Apply complete! Resources: X added) and the jenkins_public_ip output value
+### 2. Docker Build Success
+Terminal showing `docker build -t trend-app:latest .` completing without errors.
 
-7. AWS Console — infrastructure created
-	• EC2 dashboard showing the running Jenkins instance
-	• 
-	• VPC dashboard showing the created VPC:
-	• 
-8. Jenkins unlocked and dashboard
-	• Jenkins login/unlock screen (proves you set it up)
+<img src="docs/screenshots/02-docker-build.png" width="70%" />
 
-	• Jenkins dashboard showing installed plugins or the plugin manager with Docker Pipeline, Git, Kubernetes CLI, Pipeline checked
-9. GitHub webhook configured
-	• GitHub repo → Settings → Webhooks page showing the webhook URL and a green checkmark (recent delivery successful)
-10. EKS cluster running
-	• Terminal output of kubectl get nodes showing node(s) in Ready status
+### 3. Docker Container Running
+Terminal output of `docker ps` showing the `trend-app-test` container as `Up`, and the browser at `localhost:3000` showing the app served from the container.
 
-	• AWS Console → EKS → your cluster showing status Active
+<p float="left">
+  <img src="docs/screenshots/03-docker-ps.png" width="45%" />
+  <img src="docs/screenshots/03-container-browser.png" width="45%" />
+</p>
 
+### 4. GitHub Repository
+The repo's main page on GitHub showing all project files.
 
-11. Kubernetes deployment applied
-	• Terminal output of kubectl get pods showing your pods in Running status
-	• 
-	• Terminal output of kubectl get svc trend-app-service showing TYPE: LoadBalancer and an EXTERNAL-IP
+<img src="docs/screenshots/04-github-repo.png" width="70%" />
 
+### 5. Terraform Apply Success
+Terminal showing the end of `terraform apply` output — the resource creation summary (`Apply complete! Resources: X added`) and the `jenkins_public_ip` output value.
 
+<img src="docs/screenshots/05-terraform-apply.png" width="70%" />
 
-12. Jenkins pipeline build
-	• Jenkins pipeline job page showing a green/successful build in the build history
-	
-	• The pipeline stage view (Checkout → Build → Push → Deploy, all green)
+### 6. AWS Console — Infrastructure Created
+EC2 dashboard showing the running Jenkins instance, and the VPC dashboard showing the created VPC.
 
-	• Console output of one build (optional, shows the docker push and kubectl apply happening)
+<p float="left">
+  <img src="docs/screenshots/06-ec2-dashboard.png" width="45%" />
+  <img src="docs/screenshots/06-vpc-dashboard.png" width="45%" />
+</p>
 
-13. Auto-trigger proof (important one — shows real CI/CD, not manual)
-	• A git push in your terminal
+### 7. Jenkins Unlocked and Dashboard
+Jenkins unlock screen, and the dashboard/plugin manager showing **Docker Pipeline**, **Git**, **Kubernetes CLI**, and **Pipeline** installed.
 
-	• Immediately followed by Jenkins showing a new build auto-started (timestamp matching)
+<p float="left">
+  <img src="docs/screenshots/07-jenkins-unlock.png" width="45%" />
+  <img src="docs/screenshots/07-jenkins-plugins.png" width="45%" />
+</p>
 
-14. App live on the internet
-	• Browser showing the app loaded from the LoadBalancer's external URL (http://ad65ead04d5334bbda140538f13807f9-1744839119.ap-south-1.elb.amazonaws.com/) —
+### 8. GitHub Webhook Configured
+GitHub repo → **Settings → Webhooks** page showing the webhook URL and a green checkmark for a successful recent delivery.
 
+<img src="docs/screenshots/08-github-webhook.png" width="70%" />
 
-	• 
-	• 
-15. LoadBalancer ARN
-	• AWS Console → EC2 → Load Balancers, showing the load balancer with its ARN visible .
+### 9. EKS Cluster Running
+Terminal output of `kubectl get nodes` showing node(s) in `Ready` status, and the AWS Console → EKS page showing the cluster status as `Active`.
 
-	• 
-	• 
-16. Monitoring dashboard
-	• Terminal showing kubectl get pods -n monitoring with Prometheus/Grafana pods Running
-	• Grafana dashboard in browser showing live cluster/pod metrics (CPU, memory, pod count)
-<img width="1172" height="7466" alt="image" src="https://github.com/user-attachments/assets/ea186360-6b3f-4923-aa3c-378ea25e9f34" />
+<p float="left">
+  <img src="docs/screenshots/09-kubectl-nodes.png" width="45%" />
+  <img src="docs/screenshots/09-eks-console.png" width="45%" />
+</p>
 
+### 10. Kubernetes Deployment Applied
+Terminal output of `kubectl get pods` showing pods `Running`, and `kubectl get svc trend-app-service` showing `TYPE: LoadBalancer` with an `EXTERNAL-IP`.
+
+<p float="left">
+  <img src="docs/screenshots/10-kubectl-pods.png" width="45%" />
+  <img src="docs/screenshots/10-kubectl-svc.png" width="45%" />
+</p>
+
+### 11. Jenkins Pipeline Build
+Jenkins pipeline job page showing a successful build in the history, the stage view (Checkout → Build → Push → Deploy, all green), and optionally the console output of a build.
+
+<p float="left">
+  <img src="docs/screenshots/11-jenkins-build-history.png" width="30%" />
+  <img src="docs/screenshots/11-jenkins-stage-view.png" width="30%" />
+  <img src="docs/screenshots/11-jenkins-console.png" width="30%" />
+</p>
+
+### 12. Auto-Trigger Proof (Real CI/CD)
+A `git push` in the terminal, immediately followed by Jenkins showing a new build auto-started (timestamps matching).
+
+<p float="left">
+  <img src="docs/screenshots/12-git-push.png" width="45%" />
+  <img src="docs/screenshots/12-jenkins-autotrigger.png" width="45%" />
+</p>
+
+### 13. App Live on the Internet
+Browser showing the app loaded from the LoadBalancer's external URL.
+
+<img src="docs/screenshots/13-app-live.png" width="70%" />
+
+### 14. LoadBalancer ARN
+AWS Console → EC2 → Load Balancers, showing the load balancer with its ARN visible.
+
+<img src="docs/screenshots/14-loadbalancer-arn.png" width="70%" />
+
+### 15. Monitoring Dashboard
+Terminal showing `kubectl get pods -n monitoring` with Prometheus/Grafana pods `Running`, and the Grafana dashboard in the browser showing live cluster/pod metrics (CPU, memory, pod count).
+
+<p float="left">
+  <img src="docs/screenshots/15-monitoring-pods.png" width="45%" />
+  <img src="docs/screenshots/15-grafana-dashboard.png" width="45%" />
+</p>
+
+---
 
